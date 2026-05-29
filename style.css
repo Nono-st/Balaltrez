@@ -1,0 +1,699 @@
+/* ============================================================
+   BALATRO WIKI — style.css | Retro Arcade v2
+   By NONO
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+
+/* ============================================================
+   VARIABLES
+   ============================================================ */
+:root {
+    /* Paleta */
+    --cyan:          #00f5ff;
+    --cyan-dark:     #00b8c4;
+    --cyan-dim:      rgba(0, 245, 255, 0.12);
+    --morado:        #bf00ff;
+    --morado-dark:   #8800bb;
+    --morado-dim:    rgba(191, 0, 255, 0.12);
+    --amarillo:      #ffe600;
+    --rosa:          #ff2d78;
+    --verde:         #00ff88;
+
+    /* Fondos */
+    --fondo:         #08000f;
+    --fondo-card:    #0e001c;
+    --fondo-sec:     #060010;
+    --fondo-alt:     #0a0018;
+
+    /* Bordes */
+    --borde-cyan:    rgba(0, 245, 255, 0.35);
+    --borde-morado:  rgba(191, 0, 255, 0.35);
+    --borde-hover:   rgba(0, 245, 255, 0.7);
+
+    /* Texto */
+    --texto:         #ddd4ff;
+    --texto-muted:   #6a5f8a;
+    --texto-bright:  #ffffff;
+
+    /* Tipografía */
+    --font-pixel:    'Press Start 2P', monospace;
+    --font-display:  'Orbitron', sans-serif;
+    --font-body:     'Poppins', sans-serif;
+
+    --trans: 0.2s ease;
+}
+
+
+/* ============================================================
+   RESET Y BASE
+   ============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.8;
+    /* Scanlines CRT */
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.15) 0px,
+        rgba(0,0,0,0.15) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    background-attachment: fixed;
+}
+
+a { color: var(--cyan); text-decoration: none; transition: color var(--trans); }
+a:hover { color: var(--morado); }
+
+ul { padding-left: 1.4rem; }
+li { margin-bottom: 0.4rem; }
+li::marker { color: var(--cyan); }
+
+p { margin-bottom: 1rem; }
+
+em  { color: var(--cyan); font-style: normal; }
+strong { color: var(--amarillo); font-weight: 600; }
+
+code {
+    font-family: monospace;
+    background: rgba(0,245,255,0.08);
+    color: var(--cyan);
+    padding: 0.15em 0.5em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    border: 1px solid var(--borde-cyan);
+}
+
+
+/* ============================================================
+   TIPOGRAFÍA
+   ============================================================ */
+h1 {
+    font-family: var(--font-pixel);
+    font-size: clamp(0.65rem, 1.8vw, 0.95rem);
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan), 0 0 25px var(--cyan-dark);
+    letter-spacing: 0.06em;
+}
+
+h2 {
+    font-family: var(--font-pixel);
+    font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+    color: var(--morado);
+    text-shadow: 0 0 10px var(--morado), 0 0 28px var(--morado-dark);
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    line-height: 2;
+}
+
+/* h3 con línea decorativa */
+h3 {
+    font-family: var(--font-display);
+    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--borde-cyan);
+    position: relative;
+}
+
+/* Acento izquierdo en h3 */
+h3::before {
+    content: '▌';
+    color: var(--morado);
+    margin-right: 0.4em;
+    font-size: 0.8em;
+    opacity: 0.9;
+}
+
+
+/* ============================================================
+   CONTENEDOR
+   ============================================================ */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 2.5rem;
+    background: rgba(8, 0, 15, 0.97);
+    border-bottom: 2px solid var(--cyan);
+    box-shadow: 0 0 20px rgba(0,245,255,0.12), 0 2px 40px rgba(0,0,0,0.6);
+}
+
+/* Cursor parpadeante */
+.logo::after {
+    content: '_';
+    color: var(--morado);
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    margin-left: 4px;
+    animation: blink 1s step-end infinite;
+}
+
+.nav ul { list-style: none; padding: 0; display: flex; gap: 2.5rem; }
+
+.nav a {
+    font-family: var(--font-pixel);
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    color: var(--texto-muted);
+    text-transform: uppercase;
+    transition: color var(--trans), text-shadow var(--trans);
+    padding: 0.3em 0;
+    border-bottom: 1px solid transparent;
+}
+
+.nav a:hover {
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan);
+    border-color: var(--cyan);
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse 60% 50% at 50% 110%, rgba(191,0,255,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 50% -5%,  rgba(0,245,255,0.1)  0%, transparent 65%);
+}
+
+/* Grid perspectivado retro */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,245,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,255,0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    transform: rotateX(38deg) scaleY(2) translateY(18%);
+    transform-origin: bottom center;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* Viñeta lateral */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(8,0,15,0.85) 100%);
+    pointer-events: none;
+}
+
+.hero-cont {
+    position: relative;
+    z-index: 1;
+    max-width: 740px;
+}
+
+.hero-cont span {
+    display: block;
+    font-family: var(--font-pixel);
+    font-size: 0.55rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+    margin-bottom: 1.5rem;
+    animation: blink 2.5s step-end infinite;
+}
+
+.hero-cont h2 {
+    font-family: var(--font-pixel);
+    font-size: clamp(0.95rem, 3.5vw, 1.7rem);
+    color: var(--amarillo);
+    text-shadow:
+        0 0 12px var(--amarillo),
+        0 0 35px rgba(255,230,0,0.35),
+        4px 4px 0px var(--morado-dark),
+        8px 8px 0px rgba(136,0,187,0.3);
+    margin-bottom: 1.75rem;
+    line-height: 2;
+    animation: glitch 5s ease-in-out infinite;
+}
+
+.hero-cont > p {
+    font-size: 1rem;
+    color: var(--texto-muted);
+    margin-bottom: 2.5rem;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Botón arcade */
+.btn-main {
+    display: inline-block;
+    padding: 0.9rem 2.4rem;
+    background: var(--morado);
+    color: #fff;
+    font-family: var(--font-pixel);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 2px solid var(--cyan);
+    box-shadow:
+        0 0 16px var(--morado),
+        0 0 40px rgba(191,0,255,0.25),
+        5px 5px 0 var(--cyan-dark);
+    transition: all 0.15s ease;
+}
+
+.btn-main:hover {
+    background: var(--cyan);
+    color: #000;
+    border-color: var(--morado);
+    box-shadow:
+        0 0 20px var(--cyan),
+        0 0 50px rgba(0,245,255,0.3),
+        5px 5px 0 var(--morado-dark);
+    transform: translate(-3px, -3px);
+}
+
+
+/* ============================================================
+   SECCIONES
+   ============================================================ */
+
+/* Conceptos — acento cyan */
+.conceptos {
+    padding: 5rem 0;
+    background: var(--fondo);
+}
+
+.conceptos > .container > h2 {
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan), 0 0 28px var(--cyan-dark);
+}
+
+/* Consumibles — acento morado */
+.consumibles {
+    padding: 5rem 0;
+    background: var(--fondo-sec);
+    border-top: 2px solid var(--morado);
+    border-bottom: 2px solid var(--morado);
+    box-shadow: inset 0 0 80px rgba(191,0,255,0.04);
+}
+
+.consumibles > .container > h2 {
+    color: var(--morado);
+    text-shadow: 0 0 10px var(--morado), 0 0 28px var(--morado-dark);
+}
+
+/* Guías — acento verde */
+.guias {
+    padding: 5rem 0;
+    background: var(--fondo);
+}
+
+.guias > .container > h2 {
+    color: var(--verde);
+    text-shadow: 0 0 10px var(--verde);
+}
+
+.guias .card h3 { color: var(--verde); border-color: rgba(0,255,136,0.3); }
+.guias .card h3::before { color: var(--cyan); }
+.guias .card { border-color: rgba(0,255,136,0.2); }
+.guias .card:hover { border-color: rgba(0,255,136,0.6); box-shadow: 0 0 20px rgba(0,255,136,0.1); }
+.guias .card::before { background: var(--verde); box-shadow: 0 0 6px var(--verde); }
+
+/* Galería de recursos */
+.galeria {
+    padding: 5rem 0;
+    background: var(--fondo-alt);
+    border-top: 2px solid var(--cyan);
+}
+
+.galeria > .container > h2 {
+    color: var(--amarillo);
+    text-shadow: 0 0 10px var(--amarillo), 0 0 28px rgba(255,230,0,0.25);
+}
+
+.asset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.asset-grid figure {
+    display: grid;
+    grid-template-rows: 88px auto;
+    align-items: center;
+    justify-items: center;
+    min-height: 136px;
+    padding: 1rem 0.75rem;
+    background: var(--fondo-card);
+    border: 1px solid var(--borde-cyan);
+    border-radius: 8px;
+    transition: border-color var(--trans), transform var(--trans), box-shadow var(--trans);
+}
+
+.asset-grid figure:hover {
+    border-color: var(--amarillo);
+    box-shadow: 0 0 18px rgba(255,230,0,0.12);
+    transform: translateY(-3px);
+}
+
+.asset-grid img {
+    max-width: 76px;
+    max-height: 84px;
+    width: auto;
+    height: auto;
+    image-rendering: auto;
+}
+
+.asset-grid figcaption {
+    max-width: 100%;
+    color: var(--texto-muted);
+    font-size: 0.72rem;
+    line-height: 1.35;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   CARDS — una sola columna para que las tablas respiren
+   ============================================================ */
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.card {
+    background: var(--fondo-card);
+    border: 1px solid var(--borde-morado);
+    padding: 1.75rem;
+    position: relative;
+    transition: border-color var(--trans), box-shadow var(--trans), transform var(--trans);
+    /* Esquina cortada estilo HUD */
+    clip-path: polygon(
+        0 0,
+        calc(100% - 16px) 0,
+        100% 16px,
+        100% 100%,
+        16px 100%,
+        0 calc(100% - 16px)
+    );
+}
+
+/* Punto de acento esquina superior derecha */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    right: 17px;
+    width: 7px;
+    height: 7px;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan), 0 0 16px var(--cyan);
+}
+
+/* Línea inferior decorativa */
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--morado), transparent);
+    opacity: 0.5;
+}
+
+.card:hover {
+    border-color: var(--borde-hover);
+    box-shadow:
+        0 0 20px rgba(0,245,255,0.12),
+        0 0 60px rgba(0,245,255,0.04),
+        inset 0 0 30px rgba(0,245,255,0.02);
+    transform: translateY(-5px);
+}
+
+/* Secciones internas de cards */
+.card section {
+    margin-top: 1.6rem;
+    padding-top: 1.6rem;
+    border-top: 1px dashed rgba(191,0,255,0.25);
+}
+
+/* Tags de rareza */
+.tag {
+    display: inline-block;
+    font-family: var(--font-pixel);
+    font-size: 0.45rem;
+    letter-spacing: 0.05em;
+    padding: 0.25em 0.6em;
+    border-radius: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.tag--comun     { background: rgba(150,150,150,0.2); color: #aaa;          border: 1px solid #666; }
+.tag--inusual   { background: rgba(0,200,100,0.15);  color: #00e080;       border: 1px solid #00a060; }
+.tag--raro      { background: rgba(0,100,255,0.15);  color: #4488ff;       border: 1px solid #2255cc; }
+.tag--legendario{ background: rgba(255,200,0,0.15);  color: var(--amarillo); border: 1px solid #cc9900; }
+
+
+/* ============================================================
+   TABLAS — ancho completo, sin scroll horizontal forzado
+   ============================================================ */
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    /* display: table para que ocupe el ancho completo */
+    display: table;
+}
+
+thead tr {
+    background: linear-gradient(90deg, rgba(191,0,255,0.18), rgba(0,245,255,0.08));
+    border-bottom: 2px solid var(--morado);
+}
+
+th {
+    padding: 0.7rem 1rem;
+    text-align: left;
+    font-family: var(--font-pixel);
+    font-size: 0.48rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    white-space: nowrap;
+}
+
+td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid rgba(191,0,255,0.1);
+    color: var(--texto);
+    vertical-align: middle;
+}
+
+td img {
+    display: block;
+    max-width: 48px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Rayas alternas */
+tbody tr:nth-child(even) {
+    background: rgba(255,255,255,0.02);
+}
+
+tbody tr:hover {
+    background: rgba(0,245,255,0.05);
+}
+
+tbody tr:hover td {
+    color: var(--texto-bright);
+}
+
+/* Borde izquierdo colorido en primera celda al hover */
+tbody tr:hover td:first-child {
+    border-left: 2px solid var(--cyan);
+    padding-left: calc(1rem - 2px);
+}
+
+/* Filas separadoras */
+td.separador,
+tr.separador td {
+    background: rgba(191,0,255,0.14) !important;
+    color: var(--morado) !important;
+    font-family: var(--font-pixel);
+    font-size: 0.48rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-left: 3px solid var(--morado);
+    text-align: center;
+}
+
+/* Imagen en tabla con texto debajo */
+td p {
+    margin: 0.25rem 0 0;
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--texto-muted);
+}
+
+/* Imagen pequeña en tablas */
+.tabla-img {
+    max-width: 48px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+    background: var(--fondo-card);
+    border-top: 2px solid var(--cyan);
+    box-shadow: 0 -4px 40px rgba(0,245,255,0.07);
+    padding: 3.5rem 1.5rem;
+    text-align: center;
+}
+
+.footer-cont h2 {
+    font-family: var(--font-pixel);
+    font-size: 0.75rem;
+    color: var(--cyan);
+    text-shadow: 0 0 12px var(--cyan);
+    margin-bottom: 1rem;
+    letter-spacing: 0.12em;
+}
+
+.footer-cont p {
+    color: var(--texto-muted);
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+@keyframes glitch {
+    0%, 90%, 100% {
+        text-shadow:
+            0 0 12px var(--amarillo),
+            0 0 35px rgba(255,230,0,0.35),
+            4px 4px 0 var(--morado-dark),
+            8px 8px 0 rgba(136,0,187,0.3);
+    }
+    92% {
+        text-shadow:
+            -3px 0 var(--cyan),
+            3px 0 var(--morado),
+            0 0 20px var(--amarillo);
+        transform: skewX(-3deg);
+    }
+    94% {
+        text-shadow:
+            3px 0 var(--rosa),
+            -3px 0 var(--cyan);
+        transform: skewX(2deg);
+    }
+    96% {
+        text-shadow:
+            0 0 12px var(--amarillo),
+            4px 4px 0 var(--morado-dark);
+        transform: skewX(0);
+    }
+}
+
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--fondo); }
+::-webkit-scrollbar-thumb { background: var(--morado-dark); box-shadow: 0 0 6px var(--morado); }
+::-webkit-scrollbar-thumb:hover { background: var(--morado); }
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+    }
+
+    .nav ul {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .cards { gap: 1.5rem; }
+
+    .hero { padding: 3rem 1rem; min-height: 60vh; }
+    .hero-cont h2 { font-size: 0.85rem; }
+
+    table  { font-size: 0.75rem; }
+    th, td { padding: 0.45rem 0.65rem; }
+}
+
+@media (max-width: 480px) {
+    h2 { font-size: 0.58rem; }
+    .card { padding: 1.2rem; }
+    .btn-main { font-size: 0.48rem; padding: 0.75rem 1.5rem; }
+}

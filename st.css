@@ -1,0 +1,318 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111111;
+            color: #f5f5f5;
+        }
+
+        /* ── HEADER ── */
+        .header {
+            background-color: #1a1a1a;
+            border-bottom: 2px solid #ff2e63;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: #f7b731;
+        }
+
+        .header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+        }
+
+        .header nav ul li a {
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .header nav ul li a:hover {
+            color: #f7b731;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            background:
+                linear-gradient(rgba(17, 17, 17, 0.68), rgba(17, 17, 17, 0.9)),
+                url("back.jpeg") center / cover no-repeat;
+        }
+
+        .hero-cont {
+            max-width: 680px;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.4rem;
+            color: #f7b731;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #aaaaaa;
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background-color: #ff2e63;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 36px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .btn-main:hover {
+            background-color: #c41e47;
+            transform: scale(1.04);
+        }
+
+        /* ── ABOUT ── */
+        .about {
+            background-color: #1a1a1a;
+            padding: 80px 40px;
+            text-align: center;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .about h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: #f7b731;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1rem;
+            color: #aaaaaa;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ── BENEFICIOS ── */
+        .beneficios {
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .beneficios h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: #f7b731;
+            margin-bottom: 48px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 32px 24px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #ff2e63;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            color: #ff2e63;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+            line-height: 1.7;
+        }
+
+        /* ── TESTIMONIOS ── */
+        .testimonios {
+            background-color: #1a1a1a;
+            padding: 80px 40px;
+            text-align: center;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .testimonios h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: #f7b731;
+            margin-bottom: 48px;
+        }
+
+        .testimonios .cards {
+            max-width: 700px;
+        }
+
+        .testimonios .card p {
+            font-style: italic;
+            color: #f5f5f5;
+            margin-bottom: 12px;
+        }
+
+        .testimonios .card span {
+            font-size: 0.8rem;
+            color: #f7b731;
+            font-weight: 600;
+        }
+
+        /* ── CTA FINAL ── */
+        .cta-final {
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: #f5f5f5;
+            margin-bottom: 16px;
+        }
+
+        .cta-final p {
+            color: #aaaaaa;
+            margin-bottom: 36px;
+            font-size: 1rem;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            background-color: #1a1a1a;
+            border-top: 2px solid #ff2e63;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: #f7b731;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+
+
+
+
+
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+
+    .header {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header .logo {
+        font-size: 1.2rem;
+    }
+
+    .header nav ul {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .header nav ul li a {
+        font-size: 1rem;
+    }
+
+    .hero {
+        min-height: 80vh;
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 1.7rem;
+        line-height: 1.4;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 28px;
+    }
+
+    .btn-main {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+    }
+
+    .about h2,
+    .beneficios h2,
+    .testimonios h2,
+    .cta-final h2 {
+        font-size: 1.5rem;
+    }
+
+    .about p,
+    .cta-final p {
+        font-size: 0.95rem;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card {
+        padding: 24px 18px;
+    }
+
+    .footer {
+        padding: 30px 20px;
+    }
+
+    .footer h2 {
+        font-size: 1.2rem;
+    }
+
+    .footer p {
+        font-size: 0.8rem;
+    }
+}
